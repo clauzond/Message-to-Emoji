@@ -36,7 +36,7 @@ def create_letter_dic():
         letter_dic[str(i)] = [f":{numbers[i]}:"]
 
     # punctuation
-    letter_dic["!"] = [":exclamation:", ":exclaim:", ":grey_exclamation:"] 
+    letter_dic["!"] = [":exclamation:", ":grey_exclamation:"] 
     letter_dic["?"] = [":question:", ":grey_question:"] 
     letter_dic["#"] = [":hash:"]
     letter_dic["*"] = [":asterisk:"]
