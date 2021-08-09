@@ -1,9 +1,8 @@
-from collections import defaultdict
 import random
+import os, platform
+import time
 import unicodedata
 import pyperclip
-import time
-import os, platform
 
 def strip_accents(s):
    return ''.join(c.lower() for c in unicodedata.normalize('NFD', s)
@@ -16,7 +15,7 @@ def clear():
         return os.system('clear')
 
 def create_letter_dic():
-    letter_dic = defaultdict(lambda:[""])
+    letter_dic = {}
 
     # a to z
     for i in range(ord("a"), ord("z")+1):
@@ -55,7 +54,13 @@ def choice(letter_list):
         return(random.choice(letter_list) + " ")
 
 def message_to_emote(message: str):
-    return "".join((choice(LETTER_DIC[letter]) for letter in strip_accents(message)))
+    res = ""
+    for letter in strip_accents(message):
+        try:
+            res += choice(LETTER_DIC[letter])
+        except:
+            pass
+    return res
 
 def menu():
     try:
