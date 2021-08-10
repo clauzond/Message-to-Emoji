@@ -43,7 +43,7 @@ function create_letter_dict() {
     letter_dict["+"] = [":heavy_plus_sign:"];
     letter_dict["-"] = [":heavy_minus_sign:"];
     letter_dict["$"] = [":heavy_dollar_sign:"];
-    letter_dict[" "] = ["  "];
+    letter_dict[" "] = ["   "];
 
     return letter_dict;
 }
