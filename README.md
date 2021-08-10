@@ -6,8 +6,9 @@ Why not ? HUH ⁉
 
 ## Todo ⏳
 
-- [ ] Javascript implementation
+- [ ] AWAITING FOR MISSION
 
 ## Done ✔ 
 
+- [x] Javascript implementation
 - [x] Python: most of the things done
