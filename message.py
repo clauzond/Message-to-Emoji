@@ -14,38 +14,38 @@ def clear():
     else:
         return os.system('clear')
 
-def create_letter_dic():
-    letter_dic = {}
+def create_letter_dict():
+    letter_dict = {}
 
     # a to z
     for i in range(ord("a"), ord("z")+1):
-        letter_dic[chr(i)] = [f":regional_indicator_{chr(i)}:"]
+        letter_dict[chr(i)] = [f":regional_indicator_{chr(i)}:"]
 
     # special a to z
-    letter_dic["a"] += [":a:"]
-    letter_dic["b"] += [":b:"]
-    letter_dic["i"] += [":information_source:"]
-    letter_dic["m"] += [":m:"]
-    letter_dic["o"] += [":o:", ":o2:"]
-    letter_dic["p"] += [":parking:"]
-    letter_dic["x"] += [":x:"]
+    letter_dict["a"] += [":a:"]
+    letter_dict["b"] += [":b:"]
+    letter_dict["i"] += [":information_source:"]
+    letter_dict["m"] += [":m:", ":scorpius:"]
+    letter_dict["o"] += [":o:", ":o2:"]
+    letter_dict["p"] += [":parking:"]
+    letter_dict["x"] += [":x:", ":negative_squared_cross_mark:"]
 
     # 0 to 9
     numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
     for i in range(0, 10):
-        letter_dic[str(i)] = [f":{numbers[i]}:"]
+        letter_dict[str(i)] = [f":{numbers[i]}:"]
 
     # punctuation
-    letter_dic["!"] = [":exclamation:", ":grey_exclamation:"] 
-    letter_dic["?"] = [":question:", ":grey_question:"] 
-    letter_dic["#"] = [":hash:"]
-    letter_dic["*"] = [":asterisk:"]
-    letter_dic["+"] = [":heavy_plus_sign:"]
-    letter_dic["-"] = [":heavy_minus_sign:"]
-    letter_dic["$"] = [":heavy_dollar_sign:"]
-    letter_dic[" "] = ["   "]
+    letter_dict["!"] = [":exclamation:", ":grey_exclamation:"] 
+    letter_dict["?"] = [":question:", ":grey_question:"] 
+    letter_dict["#"] = [":hash:"]
+    letter_dict["*"] = [":asterisk:"]
+    letter_dict["+"] = [":heavy_plus_sign:"]
+    letter_dict["-"] = [":heavy_minus_sign:"]
+    letter_dict["$"] = [":heavy_dollar_sign:"]
+    letter_dict[" "] = ["   "]
 
-    return letter_dic
+    return letter_dict
 
 def choice(letter_list):
     if letter_list[0] == "":
@@ -57,9 +57,9 @@ def message_to_emote(message: str):
     res = ""
     for letter in strip_accents(message):
         try:
-            res += choice(LETTER_DIC[letter])
+            res += choice(LETTER_DICT[letter])
         except:
-            res += letter
+            res += letter + " "
     return res
 
 def menu():
@@ -77,7 +77,7 @@ def menu():
     except:
         return
 
-LETTER_DIC = create_letter_dic()
+LETTER_DICT = create_letter_dict()
 
 if __name__ == "__main__":
     try:
