@@ -47,17 +47,14 @@ def create_letter_dict():
 
     return letter_dict
 
-def choice(letter_list):
-    if letter_list[0] == "":
-        return ""
-    else:
-        return(random.choice(letter_list) + " ")
-
 def message_to_emote(message: str):
     res = ""
     for letter in strip_accents(message):
         try:
-            res += choice(LETTER_DICT[letter])
+            if letter == " ":
+                res += LETTER_DICT[letter]
+            else:
+                res += random.choice(LETTER_DICT[letter]) + " "
         except:
             res += letter + " "
     return res
