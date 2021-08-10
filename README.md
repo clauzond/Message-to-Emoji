@@ -1,5 +1,5 @@
 # Message to Emoji 🥵
-Converts your message into emojis from Discord.
+Converts your message into emojis from Discord. Click [here](https://thecsmine.github.io/Message-to-Emoji/) for an awesome experience.
 
 ## Why ❔
 Why not ? HUH ⁉
@@ -10,5 +10,6 @@ Why not ? HUH ⁉
 
 ## Done ✔ 
 
-- [x] Javascript implementation
 - [x] Python: most of the things done
+- [x] Javascript implementation
+- [x] Best website ever
