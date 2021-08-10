@@ -54,9 +54,9 @@ function create_letter_dict() {
     letter_dict["$"] = [":heavy_dollar_sign:"];
     letter_dict[" "] = ["  "];
 
-    // patterns (put in order by prefix)
+    // patterns
     add_pattern(letter_dict, "<3", [":heart:"]);
-    add_pattern(letter_dict, "zahx", ["Dieu"]);
+    add_pattern(letter_dict, "zahx", [":regional_indicator_d: :regional_indicator_i: :regional_indicator_e: :regional_indicator_u:"]);
 
     return letter_dict;
 }
