@@ -43,7 +43,7 @@ def create_letter_dict():
     letter_dict["+"] = [":heavy_plus_sign:"]
     letter_dict["-"] = [":heavy_minus_sign:"]
     letter_dict["$"] = [":heavy_dollar_sign:"]
-    letter_dict[" "] = ["   "]
+    letter_dict[" "] = ["  "]
 
     return letter_dict
 
@@ -52,7 +52,7 @@ def message_to_emote(message: str):
     for letter in strip_accents(message):
         try:
             if letter == " ":
-                res += LETTER_DICT[letter]
+                res += LETTER_DICT[letter][0]
             else:
                 res += random.choice(LETTER_DICT[letter]) + " "
         except:
