@@ -62,7 +62,7 @@ def message_to_emote(message: str):
 def menu():
     try:
         clear()
-        print("Enter your message (I will convert it to emotes in your paperclip 🥵)")
+        print("Enter your message (I will convert it to emotes in your clipboard 🥵)")
         message = strip_accents(str(input("> ")))
         pyperclip.copy(message_to_emote(message))
         for i in range(0, 4):
