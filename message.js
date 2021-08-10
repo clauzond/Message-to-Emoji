@@ -88,7 +88,11 @@ function not_an_easter_egg(message) {
     if (message.strip_accents().includes("diablo")) {
         document.getElementById("other-alert").style.backgroundColor = "#e68792";
         show_other_alert("Diablo... ?");
+        $("#other-alert").effect("explode");
         return false;
+    }
+    if (message.strip_accents().includes("shake")) {
+        $("body").effect("shake");
     }
     return true;
 }

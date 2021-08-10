@@ -6,7 +6,6 @@
 
     <title>Message to Emoji</title>
     <link rel="icon" href="https://images.emojiterra.com/twitter/v13.0/512px/1f975.png">
-    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -15,19 +14,20 @@
     <div class="container">
 
         <div id="title-container" class="text-center row">
-            <label class="text-light" for="text-to-convert">Enter your message (I will convert it to emotes in your clipboard 🥵)</label>
+            <h1 class="text-light" style="margin-top: 50px" for="text-to-convert">Enter your message (I will convert it to emotes in your clipboard 🥵)</h1>
+        </div>
+        <div class="row p-5">
+            <form id="converter-container" class="input-group" onsubmit="return false">
+                <input name="text-to-convert" id="text-to-convert" class=" col-10 form-control" />
+                <button type="submit" class=" col-2 btn btn-outline-success" id="submit-button">Convert</button>
+            </form>
         </div>
 
-        <form id="converter-container" class="input-group row" onsubmit="return false">
-            <input name="text-to-convert" id="text-to-convert" class="form-control" />
-            <button type="submit" class="btn btn-outline-success" id="submit-button">Convert</button>
-        </form>
-
-        <div id="copy-alert" class="alert alert-success" role="alert" style="display: none;">
+        <div id="copy-alert" class="alert alert-success text-center display-6" role="alert" style="display: none;">
             Message converted to emotes 🥵
         </div>
 
-        <div id="other-alert" class="alert alert-warning" role="alert" style="display: none;">
+        <div id="other-alert" class="alert alert-warning text-center display-6" role="alert" style="display: none;">
             Oeuf de pâque
         </div>
 
