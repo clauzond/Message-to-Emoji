@@ -43,7 +43,10 @@ function create_letter_dict() {
     letter_dict["+"] = [":heavy_plus_sign:"];
     letter_dict["-"] = [":heavy_minus_sign:"];
     letter_dict["$"] = [":heavy_dollar_sign:"];
-    letter_dict[" "] = ["   "];
+    letter_dict[" "] = ["  "];
+
+    // patterns
+    letter_dict["<3"] = [":heart:"];
 
     return letter_dict;
 }
@@ -65,6 +68,36 @@ function message_to_emote(message) {
         }
     }
     return res;
+}
+
+function message_to_emote_patterns(message) {
+    var emote = "";
+    var current_pattern;
+    var step;
+    message = message.strip_accents();
+    for (var i=0 ; i < message.length ; i++) {
+        step = 1;
+        while ((i+step+1 <= message.length) && letter_dict[message.substring(i, i+step+1)]) { // while it is a valid pattern, step++
+            step++;
+        }
+        current_pattern = message.substring(i, i+step);
+        if (letter_dict[current_pattern]) {
+            emote += letter_dict[current_pattern].sample() + " ";
+        } else {
+            emote += current_pattern + " ";
+        }
+
+        i += step - 1;
+    }
+    return emote;
+}
+
+function copy_to_clipboard() {
+    bool = not_an_easter_egg(document.getElementById("text-to-convert").value);
+    if (bool) {
+        show_alert(`Message converted to emotes ${random_emoji()}`);
+    }
+    navigator.clipboard.writeText(message_to_emote_patterns(document.getElementById("text-to-convert").value));
 }
 
 function random_emoji() {
@@ -97,14 +130,6 @@ function not_an_easter_egg(message) {
     return true;
 }
 
-function copy_to_clipboard() {
-    bool = not_an_easter_egg(document.getElementById("text-to-convert").value);
-    if (bool) {
-        show_alert(`Message converted to emotes ${random_emoji()}`);
-    }
-    navigator.clipboard.writeText(message_to_emote(document.getElementById("text-to-convert").value));
-}
-
 function show_alert(message) {
     document.getElementById("copy-alert").innerHTML = message;
     $('#copy-alert').fadeIn("easing");
@@ -115,11 +140,7 @@ function show_other_alert(message) {
     document.getElementById("other-alert").innerHTML = message;
     $('#other-alert').fadeIn("easing");
     setTimeout(() => { $('#other-alert').fadeOut("easing") }, alert_timeout);
-    setTimeout(() => {document.getElementById("other-alert").style.backgroundColor = ""}, alert_timeout + 300);
-}
-
-function hide_alert() {
-    $('#copy-alert').hide();
+    setTimeout(() => { document.getElementById("other-alert").style.backgroundColor = "" }, alert_timeout + 300);
 }
 
 create_letter_dict();
