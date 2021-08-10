@@ -9,6 +9,15 @@ String.prototype.strip_accents = function () {
     return this.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
+function add_pattern(dict, key, values) {
+    for (i = 1; i < key.length - 1; i++) {
+        if (!dict[key.substring(0, i + 1)]) {
+            dict[key.substring(0, i + 1)] = "";
+        }
+    }
+    dict[key] = values;
+}
+
 function randint(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -45,8 +54,9 @@ function create_letter_dict() {
     letter_dict["$"] = [":heavy_dollar_sign:"];
     letter_dict[" "] = ["  "];
 
-    // patterns
-    letter_dict["<3"] = [":heart:"];
+    // patterns (put in order by prefix)
+    add_pattern(letter_dict, "<3", [":heart:"]);
+    add_pattern(letter_dict, "zahx", ["Dieu"]);
 
     return letter_dict;
 }
@@ -75,16 +85,23 @@ function message_to_emote_patterns(message) {
     var current_pattern;
     var step;
     message = message.strip_accents();
-    for (var i=0 ; i < message.length ; i++) {
+    for (var i = 0; i < message.length; i++) {
         step = 1;
-        while ((i+step+1 <= message.length) && letter_dict[message.substring(i, i+step+1)]) { // while it is a valid pattern, step++
+        while ((i + step + 1 <= message.length) && (letter_dict[message.substring(i, i + step + 1)] != undefined)) { // while it is a valid pattern, step++
             step++;
         }
-        current_pattern = message.substring(i, i+step);
+
+        current_pattern = message.substring(i, i + step);
+        if ((step > 1) && !letter_dict[current_pattern]) { // caught in semi-pattern
+            step = 1;
+            current_pattern = message[i];
+        }
+
         if (letter_dict[current_pattern]) {
             emote += letter_dict[current_pattern].sample() + " ";
         } else {
-            emote += current_pattern + " ";
+            emote += message[i] + " ";
+            step = 1;
         }
 
         i += step - 1;
