@@ -124,7 +124,7 @@ function random_emoji() {
 
 function not_an_easter_egg(message) {
     if (message.toLowerCase().includes("ujkpgs")) {
-        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank');
+        setTimeout(() => {window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank')}, 2000);
     }
     if (message.strip_accents().includes("zahx") && !message.includes("ZahX")) {
         show_other_alert("Ca s'écrit <b><span style='font-size:200%'>Z</span>ah<span style='font-size:200%'>X</span></b> connard");
