@@ -128,6 +128,7 @@ function not_an_easter_egg(message) {
     }
     if (message.strip_accents().includes("zahx") && !message.includes("ZahX")) {
         show_other_alert("Ca s'écrit <b><span style='font-size:200%'>Z</span>ah<span style='font-size:200%'>X</span></b> connard");
+        setTimeout(() => {window.open("https://www.youtube.com/watch?v=ZW_WwHeHHZ0", '_blank')}, 6000);
         return false;
     }
     if (message.strip_accents().includes("shrek")) {
