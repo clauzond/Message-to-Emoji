@@ -87,6 +87,9 @@ function message_to_emote_patterns(message) {
 
 create_letter_dict();
 
-if (module.exports){
+// node.js or module
+if (module.exports) {
     module.exports = message_to_emote_patterns;
+} else {
+    export { message_to_emote_patterns };
 }
