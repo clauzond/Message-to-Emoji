@@ -162,4 +162,3 @@ function show_other_alert(message) {
 }
 
 create_letter_dict();
-document.getElementById("submit-button").onclick = copy_to_clipboard;
