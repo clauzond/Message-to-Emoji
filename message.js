@@ -9,7 +9,7 @@ String.prototype.strip_accents = function () {
 }
 
 function add_pattern(dict, key, values) {
-    for (i = 1; i < key.length - 1; i++) {
+    for (let i = 1; i < key.length - 1; i++) {
         if (!dict[key.substring(0, i + 1)]) {
             dict[key.substring(0, i + 1)] = "";
         }
@@ -34,7 +34,7 @@ function create_letter_dict() {
     letter_dict["x"].push(...[":x:", ":negative_squared_cross_mark:"]);
 
     // 0 to 9
-    numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
     for (var i = 0; i < 10; i++) {
         letter_dict[String(i)] = [`:${numbers[i]}:`];
     }
@@ -56,7 +56,7 @@ function create_letter_dict() {
     return letter_dict;
 }
 
-function message_to_emote_patterns(message) {
+export function message_to_emote_patterns(message) {
     var emote = "";
     var current_pattern;
     var step;
@@ -87,9 +87,8 @@ function message_to_emote_patterns(message) {
 
 create_letter_dict();
 
-// node.js or module
-if (module.exports) {
+// node.js
+try {
     module.exports = message_to_emote_patterns;
-} else {
-    export { message_to_emote_patterns };
+} catch {
 }
