@@ -1,5 +1,5 @@
 const letter_dict = {};
-const alert_timeout = 10000;
+const alert_timeout = 1000;
 
 Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
